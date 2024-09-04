@@ -10,4 +10,11 @@ class Gradebook
     def add_course(course)
         @courses << course
     end
+
+    def list_all_students
+        student_list = @courses.group_by do |course|
+            course.students
+        end
+        student_list.invert
+    end
 end

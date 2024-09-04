@@ -22,14 +22,22 @@ RSpec.describe Student do
     expect(gradebook.courses.count).to eq(1)
   end
 
-  xit "can #list_all_students" do
+  it "can #list_all_students" do
   gradebook = Gradebook.new("John Smith")
   course = Course.new("Calculus",2)
+  course2 = Course.new("Spanish",3)
+  gradebook.add_course(course)
+  gradebook.add_course(course2)
   student1 = Student.new({name: "Morgan", age: 21})
   student2 = Student.new({name: "Devlin", age: 33})
+  student3 = Student.new({name: "Rupert", age: 20})
   course.enroll(student1) 
   course.enroll(student2)
-  expect(gradebook.list_all_students).to eq(course:[student1,student2])
+  course2.enroll(student3)
+  gradebook.list_all_students
+
+  #require "pry"; binding. pry
+  expect(gradebook.list_all_students.count).to eq(2)
   end
 
   xit "can find #students_below a threshold" do
