@@ -6,6 +6,7 @@ require 'pry'
 RSpec.describe Course do
     before(:each) do
         @course = Course.new("Calculus", 2) 
+        @course2 = Course.new("Cooking", 4) 
         @student1 = Student.new({name: "Morgan", age: 21})
         @student2 = Student.new({name: "Jordan", age: 29})
     end
@@ -15,8 +16,20 @@ RSpec.describe Course do
             expect(@course).to be_instance_of(Course)
         end
 
+        it 'has a name' do
+            expect(@course.name).to eq("Calculus")
+        end
+
+        it 'has a different name' do
+            expect(@course2.name).to eq("Cooking")
+        end
+
         it 'can have a capacity' do
             expect(@course.capacity).to eq(2)
+        end
+
+        it 'can have a different capacity' do
+            expect(@course2.capacity).to eq(4)
         end
 
         it 'can have students' do
@@ -31,6 +44,7 @@ RSpec.describe Course do
             expect(@course.students.count).to eq(1)
             @course.enroll(@student2)
             expect(@course.students.count).to eq(2)
+            expect(@course2.students.count).to eq(0)
         end
     end
 
@@ -44,6 +58,8 @@ RSpec.describe Course do
             expect(@course.full?).to eq(false)
             @course.enroll(@student2)
             expect(@course.full?).to eq(true)
+            expect(@course2.full?).to eq(false)
+
         end
     end
   
