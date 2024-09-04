@@ -44,6 +44,12 @@ RSpec.describe Gradebook do
   end
   
   it 'knows students who are not passing' do
-    #students with score less than 70 = below threshold
+    @gradebook.add_course(@course1)
+    @gradebook.add_course(@course2)
+    @student1.log_score(94)
+    @student2.log_score(67)
+    @student3.log_score(74)
+
+    expect(@gradebook.students_below_threshold(70)).to eq([@student2])
   end
 end
