@@ -15,10 +15,11 @@ RSpec.describe Student do
     expect(gradebook.courses).to eq([])
   end
 
-  xit "can #add_course to the gradebook" do
+  it "can #add_course to the gradebook" do
     gradebook = Gradebook.new("John Smith")
     course = Course.new("Calculus",2)
-    expect(gradebook.add_course(course)).to eq(["Calculus"])
+    gradebook.add_course(course)
+    expect(gradebook.courses.count).to eq(1)
   end
 
   xit "can #list_all_students" do
