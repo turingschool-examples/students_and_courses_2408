@@ -31,7 +31,7 @@ RSpec.describe Student do
     expect(@morgan.scores).not_to eq ([])
   end
 
-  xit "can provide an average score" do 
+  it "can provide an average score" do 
     @morgan.log_score(89)
     @morgan.log_score(78)
     expect(@morgan.grade).to eq (83.5)
