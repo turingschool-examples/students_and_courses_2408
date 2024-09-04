@@ -9,4 +9,14 @@ RSpec.describe Course do
         expect(course.name).to eq("Calculus")
         expect(course.capacity).to eq(2)
     end
+    
+    describe '.full?' do
+        it'tells if course is full' do
+        course = Course.new("Calculus", 2)
+
+        course.full?
+        expect(course.full?).to eq(false)
+        end
+    end
+
 end
