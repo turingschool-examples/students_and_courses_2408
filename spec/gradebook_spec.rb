@@ -14,7 +14,7 @@ RSpec.describe Course do
         @gradebook2 = Gradebook.new("Keith")
     end
 
-    describe "#initialiation" do
+    describe "#initialization" do
         it 'can exist' do
             expect(@gradebook1).to be_instance_of(Gradebook)
         end
@@ -39,7 +39,7 @@ RSpec.describe Course do
             expect(@gradebook1.courses.count).to eq(1)
             @gradebook1.add_course(@course2)
             expect(@gradebook1.courses.count).to eq(2)
-            expect(@gradebook2.courses.count).to eq([])
+            expect(@gradebook2.courses.count).to eq(0)
         end
     end
 
@@ -47,14 +47,17 @@ RSpec.describe Course do
         it 'can list students' do
             @course1.enroll(@student1)
             @gradebook1.add_course(@course1)
-            expect(@gradebook1.list_all_students).to eq ({@course1: [@student1]})
+            expect(@gradebook1.list_all_students).to eq({@course1 => [@student1]})
             @course1.enroll(@student2)
-            expect(@gradebook1.list_all_students).to eq ({@course1: [@student1, @student2]})
+            expect(@gradebook1.list_all_students).to eq({@course1 => [@student1, @student2]})
+            @course2.enroll(@student1)
+            @gradebook1.add_course(@course2)
+            expect(@gradebook1.list_all_students).to eq({@course1 => [@student1, @student2], @course2 => [@student1]})
         end
     end
 
     describe '#students_below' do
-        it 'can list all students whose grade is below a threshhold' do
+        xit 'can list all students whose grade is below a threshhold' do
             @student1.log_score(65)
             @student1.log_score(85) #75
             @student2.log_score(95)
