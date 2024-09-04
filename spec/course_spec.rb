@@ -35,5 +35,6 @@ RSpec.describe Course do
 
         expect(course.students).to eq [student1, student2]
         expect(course.full?).to be true
+    end
 
 end
