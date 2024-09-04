@@ -11,6 +11,10 @@ RSpec.describe Gradebook do
 
         @student1 = Student.new({name: "Morgan", age: 21})
         @student2 = Student.new({name: "Jordan", age: 29})  
+
+        @student1.log_score(56)
+        @student1.log_score(60)
+        @student1.log_score(62)
     end
 
     describe '#initialze' do
@@ -48,6 +52,15 @@ RSpec.describe Gradebook do
             }
 
             expect(@gradebook.list_all_students).to eq(expected)
+        end
+    end
+
+    describe '#students below' do
+        it 'identifies students with grades below a given threshold' do
+            @gradebook.add_course(@course)
+            @course.enroll(@student1)
+
+            expect(@gradebook.students_below(60)).to eq([@student1])
         end
     end
 end

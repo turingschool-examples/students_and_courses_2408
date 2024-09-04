@@ -15,4 +15,11 @@ class Gradebook
     def list_all_students
         Hash[@courses.map { |course| [course, course.students] } ] 
     end
+
+    def students_below(threshold)
+        @courses.flat_map do |course|
+
+        course.students.select { |student| student.grade < threshold }
+        end
+    end
 end
