@@ -2,6 +2,7 @@ class Course
     attr_reader :name
                 :capacity
                 :students
+                :enroll_in_course
 
     def initialize(name, capacity)
         @name = name
@@ -28,5 +29,4 @@ class Course
     def enroll(student)
         @students << student
     end
-
 end
