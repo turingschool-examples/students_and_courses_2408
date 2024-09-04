@@ -44,12 +44,13 @@ RSpec.describe Student do
   end
 
   describe '#grade' do
-  it "can give the grade of a student's scores" do ##score.sum(0.0) / score.size
-    @morgan.log_score(88)
-    @morgan.log_score(78)
-    expect(@morgan.grade).to eq(83.5)
-    @steve.log_score(85)
-    @steve.log_score(67)
-    expect(@morgan.grade).to eq(83.5)
+    it "can give the grade of a student's scores" do ##score.sum(0.0) / score.size
+      @morgan.log_score(88)
+      @morgan.log_score(78)
+      expect(@morgan.grade).to eq(83.5)
+      @steve.log_score(85)
+      @steve.log_score(67)
+      expect(@morgan.grade).to eq(83.5)
+    end
   end
 end
