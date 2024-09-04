@@ -12,9 +12,8 @@ class Student
     end
 
     def grade
-        if @scores.empty? = 0
+        return 0 if @scores.empty?
             @scores.sum / @scores.size.to_f
-        end
     end
 
 end
