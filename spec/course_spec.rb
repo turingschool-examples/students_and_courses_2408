@@ -44,7 +44,7 @@ RSpec.describe Course do
     @course.enroll(@student1)
     @course.enroll(@student2)
     @student3 = Student.new({name: "Ron", age: 54})
-     feedback = @course.enroll(@student3)
+    feedback = @course.enroll(@student3)
     expect(feedback).to eq("Sorry. No space")
   end
 end    
