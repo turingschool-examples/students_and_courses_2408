@@ -1,21 +1,13 @@
 class Course
-    attr_reader :name
-                :capacity
-                :students
+    attr_reader :name,
+                :capacity,
+                :students,
                 :enroll_in_course
 
     def initialize(name, capacity)
         @name = name
         @capacity = capacity
         @students = []
-    end
-
-    def capacity
-        @capacity
-    end
-
-    def students
-        @students
     end
 
     def full?
