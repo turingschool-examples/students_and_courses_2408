@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/student'
+require 'pry'
 
 RSpec.describe Student do
   before(:each) do
@@ -45,12 +46,12 @@ RSpec.describe Student do
 
   describe '#grade' do
     it "can give the grade of a student's scores" do ##score.sum(0.0) / score.size
-      @morgan.log_score(88)
+      @morgan.log_score(89)
       @morgan.log_score(78)
       expect(@morgan.grade).to eq(83.5)
       @steve.log_score(85)
       @steve.log_score(67)
-      expect(@morgan.grade).to eq(83.5)
+      expect(@steve.grade).to eq(76.0)
     end
   end
 end
