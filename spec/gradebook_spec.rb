@@ -33,7 +33,10 @@ RSpec.describe Course do
             expect(@gradebook1.courses.count).to eq(1)
             @gradebook1.add_course(@course2)
             expect(@gradebook1.courses.count).to eq(2)
+            expect(@gradebook2.courses.count).to eq([])
         end
     end
+
+    
 
 end
