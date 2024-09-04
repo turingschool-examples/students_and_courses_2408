@@ -1,5 +1,5 @@
 class Student
-    attr_reader :name, :age, :scores, :log_score
+    attr_reader :name, :age, :scores
     def initialize(background)
         @name = background[:name]
         @age = background[:age]
@@ -7,10 +7,10 @@ class Student
     end
 
     def log_score(score)
-        scores << score
+        @scores << score
     end
 
     def grade
-        scores.sum(0.0) / scores.size
+        @scores.sum(0.0) / scores.size
     end
 end

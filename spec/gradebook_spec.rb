@@ -32,4 +32,15 @@ RSpec.describe Gradebook do
         expect(@gradebook.list_all_students).to eq({Calculus: [@student1, @student2]})
 
     end
+
+    it "can list students below gradelevel threshold" do
+        @gradebook.add_course(@course)
+        @course.enroll(@student1)
+        @course.enroll(@student2)
+
+        @student1.log_score(89)
+        @student2.log_score(78)
+
+        expect(@gradebook.students_below(80)).to eq [@student2]
+    end
 end
