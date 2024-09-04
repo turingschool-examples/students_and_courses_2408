@@ -18,4 +18,13 @@ class Gradebook
     cohort
   end
 
+  def students_below_threshold(threshold)
+    student_arr = @courses.map(&:students)
+    all_students = student_arr.flatten 
+    students_not_passing = all_students.select do |student|
+      student.scores.any? && student.grade < threshold
+    end
+    students_not_passing
+  end
+
 end
