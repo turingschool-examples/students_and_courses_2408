@@ -11,6 +11,7 @@ RSpec.describe Student do
     expect(morgan).to be_instance_of(Student)
     expect(morgan.student_data[:name]).to eq("Morgan")
     expect(morgan.student_data[:age]).to eq(21)
+    expect(morgan.scores).to eq([])
   end
 
   describe '#log_score' do
