@@ -67,4 +67,8 @@ RSpec.describe Gradebook do
     expect(@gradebook.all_grades).to eq(final_grades)
   end
 
+  xit 'knows students in a given range' do
+    # make test for a min/max grade range
+  end
+
 end
