@@ -20,11 +20,11 @@ RSpec.describe Course do
         end
 
         it 'has a name' do
-            expect(@gradebook1.name).to eq("Judy")
+            expect(@gradebook1.instructor).to eq("Judy")
         end
 
         it 'has a different name' do 
-            expect(@gradebook2.name).to eq("Keith")
+            expect(@gradebook2.instructor).to eq("Keith")
         end
 
         it 'has courses' do
@@ -65,8 +65,39 @@ RSpec.describe Course do
             @course1.enroll(@student1)
             @course1.enroll(@student2)
             @gradebook1.add_course(@course1)
-            expect(@gradebook1.students_below(80.0)).to eq ({@course1 => [@student1]})
-            expect(@gradebook1.students_below(90.0)).to eq ({@course1 => [@student1, @student2]})
+            expect(@gradebook1.students_below(80.0)).to contain_exactly(@student1)
+            expect(@gradebook1.students_below(90.0)).to contain_exactly(@student1, @student2)
+        end
+    end
+
+    describe '#all_grades' do
+        it 'can show all grades in all courses' do
+            @course1.enroll(@student1)
+            @course1.enroll(@student2)
+            @student1.log_score(100)
+            @student1.log_score(85)
+            @student2.log_score(95)
+            @student2.log_score(10)
+            @gradebook1.add_course(@course1)
+            expect(@gradebook1.all_grades).to eq({
+                @course1 => [@student1.grade, @student2.grade]
+            })
+        end
+    end
+
+    describe '#students_in_range' do
+        it 'lists students grade in specififed range' do
+            @course1.enroll(@student1)
+            @course1.enroll(@student2)
+            @student1.log_score(100)
+            @student1.log_score(85)
+            @student2.log_score(95)
+            @student2.log_score(10)
+            @gradebook1.add_course(@course1)
+            expect(@gradebook1.students_in_range(0.0, 60.0)).to eq([@student2])
+            expect(@gradebook1.students_in_range(60.0, 100.0)).to eq([@student1])
+            expect(@gradebook1.students_in_range(0.0, 100.0)).to eq([@student1, @student2])
+
         end
     end
 
