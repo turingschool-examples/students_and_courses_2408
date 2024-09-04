@@ -40,8 +40,7 @@ RSpec.describe Gradebook do
     
     it 'Can print off a list of all the students' do 
 
-        expect()
-        
+        expect(@instructor_1.list_all_students).to eq(expected)
         
     end
 

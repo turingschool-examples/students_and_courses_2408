@@ -1,6 +1,3 @@
-require './lib/course'
-require './lib/student'
-
 class Gradebook
 
 attr_reader :instructor,
@@ -18,6 +15,10 @@ attr_reader :instructor,
         end
         student_list
     end
+
+    def add_course(course)
+        @courses << course
+      end
 
     def student_below(threshold)
         all_students = []
