@@ -9,8 +9,10 @@ RSpec.describe Course do
     end
 
     it "exists" do 
-        expect(@course).to be_instance_of(Course)
+        expect(@course).to be_instance_of (Course)
     end
 
-    
+    it "has a name" do
+        expect(@course.name).to eq ("Calculus")
+    end
 end
