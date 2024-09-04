@@ -8,3 +8,12 @@ class Course
         @students = []
     end
 
+    def full?
+        if @students.count >= 2
+            true
+        else
+            false
+        end
+    end
+
+  
