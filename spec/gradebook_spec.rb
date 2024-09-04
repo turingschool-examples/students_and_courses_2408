@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-RSpec describe Gradebook do
+RSpec.describe Gradebook do
   before(:each) do
     @gradebook = Gradebook.new("Prof Grant")
     @gradebook2 = Gradebook.new("Prof Cauliflower")
@@ -9,6 +9,12 @@ RSpec describe Gradebook do
     @student1 = Student.new({name: "Morgan", age: 21})
     @student2 = Student.new({name: "Jordan", age: 29}) 
     @student3 = Student.new({name: "Ron", age: 54})
+    @course1.enroll(@student3)
+    @course1.enroll(@student1)
+    @course2.enroll(@student1)
+    @course2.enroll(@student2)
+    @course2.enroll(@student3)
+    
   end
 
   it 'exists' do
@@ -20,9 +26,21 @@ RSpec describe Gradebook do
     expect(@gradebook.courses).to eq([])
   end
 
-  it 'knows what students are in courses'
-    expect(@gradebook.courses).to eq {"Calculus" => ["Ron", "Morgan"]}
-    expect(@gradebook2.courses).to eq{"Biology" => ["Morgan", "Jordan", "Ron"]}
+  it 'can add courses' do    
+    @gradebook.add_course(@course1)
+    expect(@gradebook.courses).to eq([@course1])
+    @gradebook.add_course(@course2)
+    expect(@gradebook.courses).to eq([@course1, @course2])
+  end
+
+  it 'knows what students are in courses' do
+    @gradebook.add_course(@course1)
+    @gradebook.add_course(@course2)
+    cohort = {
+      @course1 => [@student3, @student1],
+      @course2 => [@student1, @student2, @student3]
+    }
+    expect(@gradebook.list_students).to eq(cohort)
   end
   
   it 'knows students who are not passing' do
