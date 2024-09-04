@@ -1,3 +1,9 @@
+require 'rspec'
+require './lib/course'
+require './lib/student'
+require './lib/gradebook'
+require 'pry'
+
 RSpec.describe Course do
     before(:each) do
         @course1 = Course.new("Calculus", 2) 
@@ -37,6 +43,27 @@ RSpec.describe Course do
         end
     end
 
-    
+    describe '#list_all_students' do
+        it 'can list students' do
+            @course1.enroll(@student1)
+            @gradebook1.add_course(@course1)
+            expect(@gradebook1.list_all_students).to eq ({@course1: [@student1]})
+            @course1.enroll(@student2)
+            expect(@gradebook1.list_all_students).to eq ({@course1: [@student1, @student2]})
+        end
+    end
+
+    describe '#students_below' do
+        it 'can list all students whose grade is below a threshhold' do
+            @student1.log_score(65)
+            @student1.log_score(85) #75
+            @student2.log_score(95)
+            @student2.log_score(72) #83.5
+            @course1.enroll(@student1)
+            @course1.enroll(@student2)
+            @gradebook1.add_course(@course1)
+            expect(@gradebook1.students_below(80.0)).to eq (@student1)
+        end
+    end
 
 end
