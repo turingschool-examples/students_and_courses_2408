@@ -2,7 +2,7 @@ require 'rspec'
 require './lib/student'
 
 RSpec.describe Student do
-  defore(:each) do
+  before(:each) do
     @morgan = Student.new({name: "Morgan", age: 21})
     @steve = Student.new({name: "Steve", age: 22})
   end
