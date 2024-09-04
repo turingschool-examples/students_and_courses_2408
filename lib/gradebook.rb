@@ -5,11 +5,11 @@ require 'pry'
 
 
 class Gradebook
-    attr_reader :name,
+    attr_reader :instructor,
                 :courses
 
     def initialize(name)
-        @name = name
+        @instructor = name
         @courses = []
     end
 
@@ -26,14 +26,37 @@ class Gradebook
     end
 
     def students_below(grade_thresh)
-        students_below_threshhold = {}
+        students_below_threshhold = []
         list_all_students.each do |course, student|
-            below_threshhold = student.select do |student|
-                student.grade < grade_thresh
+            student.each do |student|
+                if student.grade < grade_thresh
+                    students_below_threshhold << student
+                end
             end
-            students_below_threshhold[course] = below_threshhold.compact
         end
         students_below_threshhold
+    end
+
+    def all_grades
+        grades = {}
+        @courses.each do |course|
+            grades[course] = course.students.map do |student|
+                student.grade
+            end
+        end
+        grades
+    end
+
+    def students_in_range(val1, val2)
+        students_range = []
+        list_all_students.each do |course, students|
+            students.each do |student|
+                if student.grade >= val1 && student.grade <= val2
+                    students_range << student
+                end
+            end
+        end
+        students_range
     end
 
 end
