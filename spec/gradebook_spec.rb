@@ -1,5 +1,6 @@
 require 'rspec'
 require './lib/gradebook'
+require './lib/course'
 
 RSpec.describe Gradebook do
 
@@ -10,11 +11,24 @@ RSpec.describe Gradebook do
     expect(gradebook1.instructor).to eq("Dumbledore")
   end
 
+  before(:each) do
+    @gradebook1 = Gradebook.new("Snape")
+    @course1 = Course.new("Potions",2)
+    @course1 = Course.new("History of Magic",5)
+  end
+
   describe '#add_course' do
     it 'can add a single course' do
+      expect(@gradebook1.courses).to eq([])
+      @gradebook1.add_course(@course1)
+      expect(@gradebook1.courses).to eq([@course1])
     end
 
     it 'can add multiple courses' do
+      expect(@gradebook1.courses).to eq([])
+      @gradebook1.add_course(@course1)
+      @gradebook1.add_course(@course2)
+      expect(@gradebook1.courses).to eq([@course1, @course2])
     end
   end
 
