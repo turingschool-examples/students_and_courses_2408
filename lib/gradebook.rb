@@ -2,9 +2,9 @@ class Gradebook
 
     attr_reader :instructor, :courses, :students
 
-    def initialize(instructor, course_info)
+    def initialize(instructor, courses)
         @instructor = instructor
-        @courses = course_info = { courses: ["calculus"] }
+        @courses = courses
     end
 
     def add_course(course)

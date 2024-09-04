@@ -15,4 +15,9 @@ RSpec.describe Gradebook do
         gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
         expect(gradebook.instructor).to eq("Mr. Instructor")
     end
+
+    it 'can give the courses' do
+        gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
+        expect(gradebook.courses).to eq(["calculus"])
+    end
 end
