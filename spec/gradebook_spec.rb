@@ -10,5 +10,13 @@ RSpec.describe Gradebook do
         @student2 = Student.new({name: "Jordan", age: 29})  
     end
 
-    it
+    it 'exists' do 
+        expect(@gradebook).to be_instance_of (Gradebook)
+    end
+
+    it 'has an instructor' do 
+        expect(@gradebook.instructor).to eq ("Nick Teets")
+    end
+
+    
 end
