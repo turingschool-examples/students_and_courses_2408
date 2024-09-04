@@ -15,6 +15,6 @@ class Student
     end
 
     def grade
-        grade = @scores.sum.to_f / 2
+        grade = @scores.sum / @scores.length.to_f
     end
 end
