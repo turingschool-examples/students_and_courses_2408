@@ -9,8 +9,9 @@ RSpec.describe Student do
   it "exists" do
     morgan = Student.new({name: "Morgan", age: 21})
     expect(morgan).to be_instance_of(Student)
-    expect(morgan.student_data[:name]).to eq("Morgan")
-    expect(morgan.student_data[:age]).to eq(21)
+    expect(morgan.name).to eq("Morgan")
+    expect(morgan.age).to eq(21)
+    expect(morgan.scores).to eq([])
   end
 
   describe '#log_score' do
