@@ -25,4 +25,15 @@ RSpec.describe Course do
             expect(@gradebook1.courses).to eq([])
         end
     end
+
+    describe '#add_course' do
+        it 'can add a course' do
+            expect(@gradebook1.courses).to eq([])
+            @gradebook1.add_course(@course1)
+            expect(@gradebook1.courses.count).to eq(1)
+            @gradebook1.add_course(@course2)
+            expect(@gradebook1.courses.count).to eq(2)
+        end
+    end
+
 end
