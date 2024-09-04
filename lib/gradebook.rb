@@ -18,4 +18,18 @@ class Gradebook
     end
     @all_students
   end 
+
+  def students_below(threshold)
+    @students_below = []
+    @courses.each do |course|
+      students_in_course = course.students
+      students_in_course.each do |student|
+        # require 'pry'; binding.pry
+        if student.grade < threshold
+          @students_below << student
+        end
+      end
+    end
+    @students_below
+  end 
 end

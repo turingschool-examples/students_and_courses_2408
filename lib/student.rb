@@ -22,7 +22,7 @@ class Student
     if @scores.length > 0
       (@scores.sum.to_f / @scores.length.to_f)
     else
-      nil
+      0
     end
   end
 end

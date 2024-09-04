@@ -66,28 +66,46 @@ RSpec.describe Gradebook do
   end
 
   describe '#students_below' do
-    it 'can list all students below the threshold when there are no students in a single course' do
-      expect(true).to eq(false)
-    end
-
     it 'can list all students below the threshold when there are students but none below the threshold in a single course' do
-      expect(true).to eq(false)
+      @gradebook1.add_course(@course1)
+      @course1.enroll(@student1)
+      @course1.students[0].log_score(90)
+      expect(@gradebook1.students_below(80)).to eq([])
     end
 
     it 'can list all students below the threshold when all students are below the threshold in a single course' do
-      expect(true).to eq(false)
+      @gradebook1.add_course(@course1)
+      @course1.enroll(@student1)
+      @course1.students[0].log_score(90)
+      expect(@gradebook1.students_below(95)).to eq([@student1])
     end
 
     it 'can list all students below the threshold some students are below the threshold in a single course' do
-      expect(true).to eq(false)
+      @gradebook1.add_course(@course1)
+      @course1.enroll(@student1)
+      @course1.students[0].log_score(90)
+      @course1.enroll(@student2)
+      @course1.students[1].log_score(95)
+      expect(@gradebook1.students_below(95)).to eq([@student1])
     end
 
     it 'can list all students below the threshold some students are below the threshold in a multiple courses' do
-      expect(true).to eq(false)
+      @gradebook1.add_course(@course1)
+      @course1.enroll(@student1)
+      @course1.students[0].log_score(90)
+      @course1.enroll(@student2)
+      @course1.students[1].log_score(95)
+      expect(@gradebook1.students_below(96)).to eq([@student1,@student2])
     end
 
     it 'can list all students below the threshold some students are below the threshold in a multiple courses with the same student' do
-      expect(true).to eq(false)
+      @gradebook1.add_course(@course1)
+      @gradebook1.add_course(@course2)
+      @course1.enroll(@student1)
+      @course1.students[0].log_score(90)
+      @course2.enroll(@student2)
+      @course2.students[0].log_score(95)
+      expect(@gradebook1.students_below(96)).to eq([@student1,@student2])
     end
   end
 end
