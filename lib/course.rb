@@ -1,17 +1,20 @@
 class Course
 
     attr_reader :name,
-                :capacity
+                :capacity,
                 :students
-
-    attr_writer :students
 
     def initialize(name, capacity)
         @name = name
         @capacity = capacity
+        @students = []
     end
 
-    def students
-        @students = []
+    def full?
+        @students.length >= @capacity
+    end
+
+    def enroll(student)
+        @students << student
     end
 end
