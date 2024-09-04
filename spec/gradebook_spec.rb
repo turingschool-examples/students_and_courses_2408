@@ -18,5 +18,10 @@ RSpec.describe Gradebook do
         expect(@gradebook.instructor).to eq ("Nick Teets")
     end
 
-    
+    it "has courses" do 
+        expect(@gradebook.courses).to eq ([])
+        @gradebook.add_course(@course2)
+        expect(@gradebook.courses).not_to eq ([])
+        expect(@gradebook.courses).to eq ([@course2])
+    end
 end
