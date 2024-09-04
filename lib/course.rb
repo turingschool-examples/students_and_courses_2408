@@ -9,6 +9,8 @@ attr_reader :name,
         @students = []
     end
 
-    
+    def full?
+        @students.count == capacity
+    end
 
 end 
