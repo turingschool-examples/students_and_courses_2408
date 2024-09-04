@@ -20,4 +20,22 @@ RSpec.describe Gradebook do
         gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
         expect(gradebook.courses).to eq(["calculus"])
     end
+
+    it 'can add courses' do
+        gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
+        gradebook.add_course("geometry")
+        expect(gradebook.courses).to eq(["calculus", "geometry"])
+    end
+
+    it 'can give a list of students' do
+        gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
+        gradebook.add_course("geometry")
+        expect(gradebook.list_of_students.values[0]).to eq(["student1", "student2"])
+    end
+
+    it 'can give a list of all students' do
+        gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
+        gradebook.add_course("geometry")
+        expect(gradebook.list_of_students.values).to include(["student1", "student2"], ["student1"])
+    end
 end
