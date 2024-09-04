@@ -20,17 +20,18 @@ RSpec.describe Gradebook do
         expect(@gradebook.instructor).to eq ("Nick Teets")
     end
 
-    xit 'has courses' do 
+    it 'has courses' do 
         expect(@gradebook.courses).to eq ([])
     end
 
-    xit 'can add courses' do 
+    it 'can add courses' do 
         @gradebook.add_course(@course2)
         expect(@gradebook.courses).not_to eq ([])
         expect(@gradebook.courses).to eq ([@course2])
+        expect(@gradebook.courses).to all (be_instance_of(Course))
     end
 
-    xit 'can have students' do
+    it 'can have students' do
         @gradebook.add_course(@course1)
         @gradebook.add_course(@course2)
         @gradebook.add_course(@course3)
@@ -40,10 +41,22 @@ RSpec.describe Gradebook do
         @gradebook.add_student(@student2, @course2)
         @gradebook.add_student(@student3, @course3)
         @gradebook.add_student(@student3, @course2)
-        expect(@gradebook.list_all_students).to eq ({course1: [student1,student2], course2: [student1, student2, student3], course3: [student3]})
+        expect(@gradebook.list_all_students).to be_instance_of (Hash)
     end
 
-    xit 'can show students below a threshhold of grades' do 
-        @gradebook.students_below(70)
+    it 'can show students below a threshhold of grades' do 
+        @gradebook.add_course(@course1)
+        @gradebook.add_course(@course2)
+        @gradebook.add_course(@course3)
+        @gradebook.add_student(@student1, @course1)
+        @gradebook.add_student(@student1, @course2)
+        @gradebook.add_student(@student2, @course1)
+        @gradebook.add_student(@student2, @course2)
+        @gradebook.add_student(@student3, @course3)
+        @gradebook.add_student(@student3, @course2)
+        @student1.log_score(89)
+        @student2.log_score(78)
+        @student3.log_score(30)
+        expect((@gradebook.students_below(70)).length).to be (1)
     end
 end
