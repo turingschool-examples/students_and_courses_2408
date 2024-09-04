@@ -38,4 +38,18 @@ RSpec.describe Gradebook do
         gradebook.add_course("geometry")
         expect(gradebook.list_of_students.values).to include(["student1", "student2"], ["student1"])
     end
+
+    it 'can track all grades' do
+        gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
+        gradebook.add_course("geometry")
+        expect(gradebook.all_grades.values).to include([78, 93], [85])
+    end
+
+    it 'can track students that are passing' do
+        gradebook = Gradebook.new("Mr. Instructor", ["calculus"])
+        gradebook.add_course("geometry")
+        gradebook.all_grades
+        gradebook.students_passing
+        expect(gradebook.students_in_range).to eq(2)
+    end
 end
