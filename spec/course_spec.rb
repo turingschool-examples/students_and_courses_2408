@@ -21,11 +21,16 @@ RSpec.describe Course do
 
   describe '#enroll' do
     it 'can enroll a student in a course' do
-      expect(true).to eq(false)
+      expect(@course.students).to eq([])
+      @course.enroll(@student1)
+      expect(@course.students).to eq([@student1])
     end
 
     it 'can enroll multiple students in a course' do
-      expect(true).to eq(false)
+      expect(@course.students).to eq([])
+      @course.enroll(@student1)
+      @course.enroll(@student2)
+      expect(@course.students).to eq([@student1, @student2])
     end
   end
       
