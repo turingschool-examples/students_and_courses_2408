@@ -20,21 +20,21 @@ RSpec.describe Course do
         expect(@course.capacity).to eq (2)
     end
 
-    xit "starts at 0 students" do
+    it "starts at 0 students" do
         expect(@course.students).to eq ([])
     end
 
-    xit "can tell wether a course is full" do
-        expect(@course.full).to eq (false)
+    it "can tell wether a course is full" do
+        expect(@course.full?).to eq (false)
         @course.enroll(@student1)
         @course.enroll(@student2)
-        expect(@course.full).to eq (true)
+        expect(@course.full?).to eq (true)
     end
 
-    xit "can enroll students" do 
+    it "can enroll students" do 
         @course.enroll(@student1)
         @course.enroll(@student2)
         expect(@course.students).not_to eq ([])
-        expect(@course.students).to all(be_instance_of(student))
+        expect(@course.students).to all(be_instance_of(Student))
     end
 end
