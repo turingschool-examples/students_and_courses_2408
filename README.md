@@ -1,5 +1,7 @@
 # Students and Courses Instructions
 
+Hello world! 
+
 ## Setup
 
 * Fork this Repository
