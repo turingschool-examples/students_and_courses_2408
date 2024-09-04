@@ -1,5 +1,5 @@
 class Student
-  attr_reader :student_data, :scores
+  attr_reader :scores
 
   def initialize(student_data)
     @student_data = student_data
@@ -8,6 +8,14 @@ class Student
 
   def log_score(score)
     @scores << score
+  end
+
+  def name
+    @student_data[:name]
+  end
+
+  def age
+    @student_data[:age]
   end
 
   def grade

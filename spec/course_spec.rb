@@ -13,9 +13,9 @@ RSpec.describe Course do
 
   before(:each) do
     @course = Course.new("History", 2)
-    @student1 = Student.new({"Wally", 36})
-    @student2 = Student.new({"Dahlia", 15})
-    @student3 = Student.new({"Brinklee", 10})
+    @student1 = Student.new({name: "Wally", age: 36})
+    @student2 = Student.new({name: "Dahlia", age: 15})
+    @student3 = Student.new({name: "Brinklee", age: 10})
   end
 
   describe '#enroll' do
