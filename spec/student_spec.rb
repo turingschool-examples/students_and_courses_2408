@@ -22,18 +22,18 @@ RSpec.describe Student do
     expect(@morgan.scores).to eq ([])
   end
 
-  xit "can add scores" do 
-    morgan.log_score(89)
+  it "can add scores" do 
+    @morgan.log_score(89)
     expect(@morgan.scores).to eq ([89])
     expect(@morgan.scores).not_to eq ([])
-    morgan.log_score(78)
-    expect(morgan.scores).to eq ([89, 78])
-    expect(morgan.scores).not_to eq ([])
+    @morgan.log_score(78)
+    expect(@morgan.scores).to eq ([89, 78])
+    expect(@morgan.scores).not_to eq ([])
   end
 
   xit "can provide an average score" do 
-    morgan.log_score(89)
-    morgan.log_score(78)
-    expect(morgan.grade).to eq (83.5)
+    @morgan.log_score(89)
+    @morgan.log_score(78)
+    expect(@morgan.grade).to eq (83.5)
   end
 end
