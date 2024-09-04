@@ -15,6 +15,6 @@ RSpec.describe Student do
   end
 
   it "has an age" do
-
+    expect(morgan.age).to eq (21)
   end
 end
