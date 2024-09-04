@@ -36,19 +36,32 @@ RSpec.describe Course do
       
   describe '#full?' do
     it 'returns false when the course is empty' do
-      expect(true).to eq(false)
+      expect(@course.students).to eq([])
+      expect(@course.full?).to eq(false)
     end
 
     it 'returns false when the course has students but not to capacity' do
-      expect(true).to eq(false)
+      expect(@course.students).to eq([])
+      expect(@course.full?).to eq(false)
+      @course.enroll(@student1)
+      expect(@course.full?).to eq(false)
     end
 
     it 'returns true when the course is at capacity' do
-      expect(true).to eq(false)
+      expect(@course.students).to eq([])
+      expect(@course.full?).to eq(false)
+      @course.enroll(@student1)
+      @course.enroll(@student2)
+      expect(@course.full?).to eq(true)
     end
 
     it 'returns true when the course is over capacity' do
-      expect(true).to eq(false)
+      expect(@course.students).to eq([])
+      expect(@course.full?).to eq(false)
+      @course.enroll(@student1)
+      @course.enroll(@student2)
+      @course.enroll(@student3)
+      expect(@course.full?).to eq(true)
     end
   end
 end
