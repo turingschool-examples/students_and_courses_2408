@@ -28,4 +28,8 @@ class Gradebook
     students_below_threshold
     end 
 
+    # def all_grades
+    #     grades_list = {}
+    #     @courses.each do |course|
+    #         grades_list[course] = 
 end
