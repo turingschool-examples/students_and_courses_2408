@@ -14,4 +14,5 @@ class Course
   def full?
     @students.length >= @capacity
   end
+
 end
