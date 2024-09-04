@@ -40,7 +40,7 @@ RSpec.describe Gradebook do
         @gradebook.add_student(@student2, @course2)
         @gradebook.add_student(@student3, @course3)
         @gradebook.add_student(@student3, @course2)
-        expect(@gradebook.list_all_students).to eq ({course1: [student1,student2], course2: [student1, student2, student3] course3: [student3]})
+        expect(@gradebook.list_all_students).to eq ({course1: [student1,student2], course2: [student1, student2, student3], course3: [student3]})
     end
 
     xit 'can show students below a threshhold of grades' do 
