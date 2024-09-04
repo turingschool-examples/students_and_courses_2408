@@ -7,11 +7,12 @@ class Student
     @scores = []
   end
 
-  def log_scores(score)
+  def log_score(score)
     @scores << score
   end
 
   def grade
-    scores.sum.to_f / scores.size
+    average = scores.sum.to_f / scores.size
+    format('%.1f', average).to_f
   end
 end
