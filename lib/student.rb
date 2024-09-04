@@ -1,17 +1,14 @@
 class Student
 
     attr_reader :name,
-                :age
-                :scores 
+                :age,
+                :scores
 
     def initialize(student_details = {})
         @name = student_details[:name]
         @age = student_details[:age]
         @scores = []
-    end
 
-    def scores
-        @scores
     end
 
     def log_score(score)
@@ -19,7 +16,7 @@ class Student
     end
 
     def grade
-        (@scores.sum.to_f / @scores.length).round(2)
+        return nil if @scores.empty?
+        @grade = (@scores.sum.to_f / @scores.length).round(2)
     end
-
 end
