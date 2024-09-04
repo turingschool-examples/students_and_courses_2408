@@ -23,7 +23,7 @@ RSpec.describe Student do
   course.enroll(student2)
   expect(course.students.count). to eq(2)
   end
-  
+
   it "can check if class is #full?" do
     course = Course.new("Calculus",2)
     expect(course.full?).to eq(false)
@@ -35,5 +35,10 @@ RSpec.describe Student do
     student2 = Student.new({name: "Devlin", age: 33})
     course.enroll(student2)
     expect(course.full?).to eq(true)
+
+    student3 = Student.new({name: "Rupert", age: 30})
+    expect(course.enroll(student3)).to eq("Class is full")
+    expect(course.students.count).to eq(2)
+    
 end
 end
