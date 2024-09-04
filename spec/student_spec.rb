@@ -45,7 +45,8 @@ RSpec.describe Student do
     expect(@gertrude.scores).to eq([88, 81])
   end
 
-  it 'can average student scores' do
+  it 'can average student scores' do    
+    expect(@morgan.grade).to eq(0)
     @morgan.log_score(89)
     @morgan.log_score(78)
     expect(@morgan.grade).to eq(83.5)
