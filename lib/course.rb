@@ -17,8 +17,15 @@ class Course
         @students.count >= @capacity
     end
 
-    def enroll(student)
-        @students << student
+    def enroll(*student)
+        return "Course if Full" if full?
+        students.each do |students|
+            @students << student
+    end
+
+    
+    def add_course(course)
+        @courses << course
     end
 end
 

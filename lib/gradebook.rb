@@ -11,10 +11,6 @@ attr_reader :instructor,
         @courses = []
     end
 
-    def add_course(course)
-        @courses << course
-    end
-
     def list_all_students
         student_list = {}
         @courses.each do |course|
@@ -27,21 +23,12 @@ attr_reader :instructor,
         all_students = []
         @courses.each do |course| 
             students_in_course = course.students
-            students_below_threshold = []
             students_in_course.each do |student|
                 if student.grade < threshold
-                    students_below_threshold << student
+                    all_students << student
                 end
             end
-        all_students += students_below_threshold
         end
         all_students
     end
-        
-
-
-        
-
-
-
 end
