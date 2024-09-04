@@ -1,5 +1,4 @@
-require 'rspec'
-require './lib/student'
+require './spec/spec_helper'
 
 RSpec.describe Student do
   before(:each) do
