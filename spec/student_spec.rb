@@ -21,8 +21,6 @@ RSpec.describe Student do
     student = Student.new({name: "Morgan", age: 21})
     student.log_score(89)
     student.log_score(78)
-    # require 'pry'; binding.pry
-    # student.grade(student.scores)
     expect(student.grade).to eq(83.5)
   end
 
