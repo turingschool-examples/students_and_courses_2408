@@ -57,7 +57,7 @@ RSpec.describe Course do
     end
 
     describe '#students_below' do
-        xit 'can list all students whose grade is below a threshhold' do
+        it 'can list all students whose grade is below a threshhold' do
             @student1.log_score(65)
             @student1.log_score(85) #75
             @student2.log_score(95)
@@ -65,7 +65,7 @@ RSpec.describe Course do
             @course1.enroll(@student1)
             @course1.enroll(@student2)
             @gradebook1.add_course(@course1)
-            expect(@gradebook1.students_below(80.0)).to eq (@student1)
+            expect(@gradebook1.students_below(80.0)).to eq ({@course1 => [@student1]})
         end
     end
 
