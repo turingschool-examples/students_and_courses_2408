@@ -15,6 +15,7 @@ RSpec.describe Course do
         expect(course.full?).to eq(false)
     end
 
+    
     it 'can enroll students' do
         course = Course.new("Calculus", 2)
         student1 = Student.new({name: "Morgan", age: 21})
