@@ -3,6 +3,7 @@ class Gradebook
     def initialize(instructor, courses)
         @instructor = instructor
         @courses = []
+        @grade_level = []
     end
 
     def add_course(course)
@@ -16,5 +17,17 @@ class Gradebook
             result[course.name.to_sym] = course.students
         end
         result
+    end
+
+    def students_below(threshold)
+        below_threshold = []
+        @courses.each do |course|
+          course.students.each do |student|
+            if student.grade < threshold
+              below_threshold << student 
+            end
+          end
+        end
+        below_threshold
     end
 end
