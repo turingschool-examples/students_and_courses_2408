@@ -66,6 +66,7 @@ RSpec.describe Course do
             @course1.enroll(@student2)
             @gradebook1.add_course(@course1)
             expect(@gradebook1.students_below(80.0)).to eq ({@course1 => [@student1]})
+            expect(@gradebook1.students_below(90.0)).to eq ({@course1 => [@student1, @student2]})
         end
     end
 
