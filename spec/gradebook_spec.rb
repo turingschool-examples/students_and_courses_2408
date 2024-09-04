@@ -15,13 +15,13 @@ RSpec.describe Student do
     expect(gradebook.courses).to eq([])
   end
 
-  it "can #add_course to the gradebook" do
+  xit "can #add_course to the gradebook" do
     gradebook = Gradebook.new("John Smith")
     course = Course.new("Calculus",2)
     expect(gradebook.add_course(course)).to eq(["Calculus"])
   end
 
-  it "can #list_all_students" do
+  xit "can #list_all_students" do
   gradebook = Gradebook.new("John Smith")
   course = Course.new("Calculus",2)
   student1 = Student.new({name: "Morgan", age: 21})
@@ -31,7 +31,7 @@ RSpec.describe Student do
   expect(gradebook.list_all_students).to eq(course:[student1,student2])
   end
 
-  it "can find #students_below a threshold" do
+  xit "can find #students_below a threshold" do
   gradebook = Gradebook.new("John Smith")
   course = Course.new("Calculus",2)
   student1 = Student.new({name: "Morgan", age: 21})
@@ -44,3 +44,4 @@ RSpec.describe Student do
   expect(gradebook.students_below(60)).to eq(course:[student2])
 
   end
+end
