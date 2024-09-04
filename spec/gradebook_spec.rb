@@ -52,4 +52,15 @@ RSpec.describe Gradebook do
 
     expect(@gradebook.students_below_threshold(70)).to eq([@student2])
   end
+
+  it 'knows all grades for all courses'
+    @gradebook.add_course(@course1)
+    @gradebook.add_course(@course2)
+    final_grades = {
+      @course1 => [74, 94],      
+      @course2 => [88, 72, 84]
+    }
+    expect(@gradebook.all_grades).to eq(final_grades)
+  end
+
 end
