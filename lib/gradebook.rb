@@ -27,7 +27,7 @@ class Gradebook
             end
          end
 
-         student_list.compact
+         student_list.invert
     #This puts the students below the threshold, but not with the course name
     end
 
@@ -44,7 +44,7 @@ class Gradebook
     end
 
     def students_in_range(min,max)
-        students_in_range = @courses.map do |course|
+        students_in_range = @courses.group_by do |course|
             course.students.find_all do |student|
                 student.grade > min && student.grade < max
             end
