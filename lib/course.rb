@@ -13,4 +13,9 @@ attr_reader :name,
         @students.count == capacity
     end
 
+
+    def enroll(student)
+        @students << student unless full?
+   end
+
 end 
