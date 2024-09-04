@@ -64,11 +64,19 @@ RSpec.describe Gradebook do
       @course1 => [74, 94],      
       @course2 => [94, 67, 74]
     }
+    #match_array for out of order results
     expect(@gradebook.all_grades).to eq(final_grades)
   end
 
-  xit 'knows students in a given range' do
-    # make test for a min/max grade range
-  end
+  it 'knows students in a given range' do
+    @gradebook.add_course(@course1)
+    @gradebook.add_course(@course2)
+    @student1.log_score(94)
+    @student2.log_score(67)
+    @student3.log_score(74)
+    expect(@gradebook.students_in_range(70, 90)).to match_array([@student3])
+    expect(@gradebook.students_in_range(70, 100)).to match_array([@student1, @student3])
+  end 
+  
 
 end
