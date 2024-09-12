@@ -7,11 +7,7 @@ class Course
     end
 
     def full?
-        if students.length >= 2
-            true
-        else
-            false
-        end
+        students.length >= capacity
     end
 
     def enroll(student)
